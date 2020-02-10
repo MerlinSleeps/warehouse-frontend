@@ -1,0 +1,15 @@
+<div class="ui center aligned grid container">
+  <div *ngFor="let palette of palettes" class="row">
+    <div class="fourteen wide column">
+      {{palette.id}}
+      {{palette.product}}
+      {{palette.items}}
+      {{palette.priority}}
+      {{palette.user.name}}
+      {{palette.place}}
+      {{palette.state}}
+    </div>
+    <div class="one wide column"><button class="ui basic button">-</button></div>
+  </div>
+</div>
+

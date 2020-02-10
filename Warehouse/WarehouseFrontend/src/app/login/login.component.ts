@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ModelService} from "../model/model.service";
+import {ModelService} from '../model/model.service';
+import {Router} from '@angular/router';
+import {printLine} from "tslint/lib/verify/lines";
 
 @Component({
   selector: 'app-login',
@@ -12,14 +14,23 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private model: ModelService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
-    const user = this.model.userName;
+    if (!this.model.currentUser) {
+      console.log('false')
+      return; }
+    console.log('current user exist')
+    this.employeeIdIn = this.model.currentUser.id;
+    this.nameIn = this.model.currentUser.name;
   }
 
   loginAction() {
-    this.model.userName = this.employeeIdIn;
-    console.log(`storing ${this.model.userName}`);
+    const date = new Date().toISOString();
+    const user = this.model.user_data(this.employeeIdIn, this.nameIn, date);
+    this.model.currentUser_data(user);
+    console.log(`storing ${this.model.currentUser.name}`);
+    this.router.navigate(['/supply']);
   }
 }

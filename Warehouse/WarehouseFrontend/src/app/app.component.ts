@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ModelService} from "./model/model.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'WarehouseFrontend';
   public username = 'no name';
   public loginname = 'login?';
 
-  public clickAction() {
-    console.log(`going to login ${this.loginname} ${this.username}`);
+  constructor(
+    private model: ModelService,
+  ) {}
+
+  ngOnInit() {
+    this.model.loadsEvent();
+    this.model.initChannels();
   }
 }

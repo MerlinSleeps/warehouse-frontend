@@ -1,1 +1,22 @@
-<p>supply works!</p>
+<div class="ui center aligned padded grid container">
+  <div class="blue row">
+    <div class="ui input">
+      <input id="pal-id-input" [(ngModel)]="palId" type="text" placeholder="pallete id?">
+    </div>  </div>
+  <div class="blue row">
+    <div class="ui input">
+      <input id="product-input"  [(ngModel)]="productName" type="text" placeholder="product?">
+    </div>  </div>
+  <div class="blue row">
+    <div class="ui input">
+      <input id="items-input" [(ngModel)]="items" type="text" placeholder="items?">
+    </div>  </div>
+  <div class="blue row">
+    <div class="ui input">
+      <input id="prio-input" [(ngModel)]="prio" type="text" placeholder="priority?">
+    </div>  </div>
+  <div class="grey row">
+    <button id="supply-button" class="ui blue button" (click)="supplyAction()">ok</button>
+  </div>
+  <div class="row">{{model.date}} </div>
+</div>

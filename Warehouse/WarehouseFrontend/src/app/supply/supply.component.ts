@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import user from '../../../../WarehouseBackend/src/model/user';
+import {ModelService} from '../model/model.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-supply',
@@ -6,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supply.component.scss']
 })
 export class SupplyComponent implements OnInit {
+  palId: string;
+  productName: string;
+  items: number;
+  prio: string;
 
-  constructor() { }
+  constructor(
+    private model: ModelService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
+    if (!this.model.currentPalette) {
+      return;
+    }
+    this.palId = this.model.currentPalette.id;
+    this.items = this.model.currentPalette.items;
+    this.prio = this.model.currentPalette.priority;
+    this.productName = this.model.currentPalette.product;
   }
 
+  supplyAction() {
+    this.model.paletteData(this.palId,
+      this.productName,
+      this.items,
+      this.prio,
+      this.model.getDate(),
+      'addedInFrontend',
+      this.model.currentUser)
+    this.router.navigate(['/ramp']);
+
+  }
 }

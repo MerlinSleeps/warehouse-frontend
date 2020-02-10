@@ -8,6 +8,8 @@ import {LoginComponent} from './login/login.component';
 import {LoginModule} from './login/login.module';
 import {SupplyModule} from './supply/supply.module';
 import {ModelService} from './model/model.service';
+import {RampModule} from './ramp/ramp.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import {ModelService} from './model/model.service';
     FormsModule,
     LoginModule,
     SupplyModule,
+    RampModule,
+    HttpClientModule
   ],
   providers: [ModelService],
   bootstrap: [AppComponent]
