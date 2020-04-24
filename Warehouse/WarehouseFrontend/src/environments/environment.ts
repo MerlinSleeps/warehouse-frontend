@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  warehouseURL: 'http://localhost:5000'
+  warehouseURL: 'to be added'
 };
 
 /*
