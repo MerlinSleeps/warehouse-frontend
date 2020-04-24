@@ -10,18 +10,19 @@ const port = 5000;
 const cors = require('cors');
 app.use(cors());
 
-const warehouseChannel = new WarehouseChannel();
 const model = new ModelService();
+
+const warehouseChannel = new WarehouseChannel();
 warehouseChannel.model = model;
 
 const shopChannel = new ShopChannel();
-shopChannel.model = model;
 model.shopChannel = shopChannel;
+shopChannel.model = model;
 
 // load database
 const database = new Database();
 model.database = database;
-// model.loadOldEvents();
+model.loadOldEvents();
 
 // meg for backend
 app.get('/', (req, res) => {
@@ -29,6 +30,9 @@ app.get('/', (req, res) => {
 });
 app.post('/warehouse', (req, res) => {
     warehouseChannel.handle(req, res);
+});
+app.post('/shop2warehouse', (req, res) => {
+    shopChannel.handle(req, res);
 });
 app.listen(port, (err) => {
     if (err) {

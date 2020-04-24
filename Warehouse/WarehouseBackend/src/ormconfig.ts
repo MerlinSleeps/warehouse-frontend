@@ -1,15 +1,13 @@
-import {tryReadFile} from 'tslint/lib/files/reading';
-import {ConnectionOptions} from 'typeorm';
 import {PostgresConnectionOptions} from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import DBEvent from './model/db-event';
 
 const typeOrmConfig: PostgresConnectionOptions = {
-    database: 'postgres',
+    database: 'warehouse-db',
     entities: [
         DBEvent,
     ],
     host: 'localhost',
-    logging: true,
+    logging: false,
     password: 'Hasu191',
     port: 5432,
     synchronize: true,

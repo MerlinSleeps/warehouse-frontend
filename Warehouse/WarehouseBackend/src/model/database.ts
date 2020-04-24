@@ -17,6 +17,7 @@ export default class Database {
     }
 
     public async store(eventKey: string, eventData: any) {
+        console.log('trying to store data');
         try {
             const theConnection = await this.connection;
             await this.doStore(theConnection, eventKey, eventData);
@@ -44,7 +45,7 @@ export default class Database {
         const self = this;
         try {
             const result = await theConnection.manager.save(theEvent);
-            // console.log('created database entry ' + theEvent.eventKey + ' ' + theEvent.eventData);
+            console.log('created database entry');
         } catch (error) {
             await self.doUpdate(theConnection, eventKey, eventData);
         }
@@ -55,7 +56,7 @@ export default class Database {
             const found = await theConnection.manager.findOne(DBEvent, eventKey);
             found.eventText = JSON.stringify(eventData);
             await theConnection.manager.save(found);
-            // console.log("successfully updated " + found.eventData);
+            // console.log('successfully updated ' + found.eventText);
         } catch (error) {
             console.log('could not save existing event ' + eventKey);
         }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ModelService} from '../model/model.service';
 import {Router} from '@angular/router';
-import {printLine} from "tslint/lib/verify/lines";
 
 @Component({
   selector: 'app-login',
@@ -19,8 +18,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (!this.model.currentUser) {
-      console.log('false')
-      return; }
+      console.log('no current user exist')
+      return;
+    }
     console.log('current user exist')
     this.employeeIdIn = this.model.currentUser.id;
     this.nameIn = this.model.currentUser.name;
@@ -31,6 +31,6 @@ export class LoginComponent implements OnInit {
     const user = this.model.user_data(this.employeeIdIn, this.nameIn, date);
     this.model.currentUser_data(user);
     console.log(`storing ${this.model.currentUser.name}`);
-    this.router.navigate(['/supply']);
+    this.router.navigate(['/supply']).then(r => console.log('login user'));
   }
 }

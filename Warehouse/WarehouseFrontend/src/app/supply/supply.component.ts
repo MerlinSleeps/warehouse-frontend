@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import user from '../../../../WarehouseBackend/src/model/user';
 import {ModelService} from '../model/model.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-supply',
@@ -30,14 +30,16 @@ export class SupplyComponent implements OnInit {
   }
 
   supplyAction() {
-    this.model.paletteData(this.palId,
+    this.model.paletteData(
+      this.palId,
       this.productName,
       this.items,
+      undefined,
       this.prio,
+      this.model.currentUser,
       this.model.getDate(),
-      'addedInFrontend',
-      this.model.currentUser)
-    this.router.navigate(['/ramp']);
+      ModelService.ADDED_IN_FRONTEND);
+    this.router.navigate(['/ramp']).then(r => console.log('go to ramp'));
 
   }
 }

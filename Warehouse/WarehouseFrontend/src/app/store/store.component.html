@@ -1,0 +1,17 @@
+<div class="ui center aligned padded grid container">
+
+  <div class="blue row">
+    <div class="ui label">
+      {{palette.id}} {{palette.product}} {{palette.priority}}
+    </div>
+  </div>
+  <div class="blue row">
+    <div class="ui input">
+      <input [(ngModel)]="placeIn" type="text" placeholder="place?">
+    </div>
+  </div>
+  <div class="padded row">
+    <button id="store-button" class="ui blue button" (click)="storePaletteAction()">store</button>
+  </div>
+
+</div>

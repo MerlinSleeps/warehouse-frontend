@@ -1,0 +1,14 @@
+<div class="ui center aligned padded grid container">
+  <div class="blue row">
+    <div class="ui input">
+      <input id="employee-id-input" [(ngModel)]="employeeIdIn" type="text" placeholder="employee id?">
+    </div>  </div>
+  <div class="blue row">
+    <div class="ui input">
+      <input id="login-input"  [(ngModel)]="nameIn" type="text" placeholder="name?">
+    </div>  </div>
+  <div class="grey row">
+    <button id="login-button" class="ui blue button" (click)="loginAction()">ok</button>
+  </div>
+  <div class="row">{{model.date}} </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModelService} from '../model/model.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {Palette} from '../model/palette';
 
 @Component({
   selector: 'app-ramp',
@@ -14,8 +15,13 @@ export class RampComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.palettes = this.model.paletteList;
+    this.model.loadsEvent();
     this.model.warehouseChannel.synchronize();
+    this.palettes = this.model.paletteList;
   }
 
+  choosePaletteAction(palette: Palette) {
+    this.model.currentPalette = palette;
+    this.router.navigate(['/store']);
+  }
 }

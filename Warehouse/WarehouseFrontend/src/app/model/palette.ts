@@ -5,9 +5,9 @@ export class Palette {
   id: string;
   product: string;
   items: number;
+  place: string;
   priority: string;
   date: string;
-  user: User;
-  place: string;
   state: string;
+  user: User;
 }

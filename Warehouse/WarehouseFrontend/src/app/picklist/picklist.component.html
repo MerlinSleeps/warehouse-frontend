@@ -1,0 +1,8 @@
+<div class="ui center aligned grid container" xmlns="http://www.w3.org/1999/html">
+  <div *ngFor="let delivery of deliveries" class="row">
+    <div class="fourteen wide column"><button class="ui basic button" (click)="choosePickAction(delivery)">
+      {{delivery.id}} {{delivery.state}}
+    </button></div>
+    <div class="one wide column"><button class="ui basic button">-</button></div>
+  </div>
+</div>

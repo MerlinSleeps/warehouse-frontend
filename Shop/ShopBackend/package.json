@@ -1,11 +1,12 @@
 {
   "name": "shopbackend",
   "version": "1.0.0",
-  "description": "Shop Backend",
+  "description": "",
   "main": "scr/app.ts",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "node dist/app.js",
     "dev": "ts-node-dev --inspect -- src/app.ts",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "merlin",

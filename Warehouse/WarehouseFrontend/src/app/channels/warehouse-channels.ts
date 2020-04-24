@@ -6,12 +6,18 @@ export class WarehouseChannels {
   public synchronize() {
     const message = {
       greeting: 'Hello from the frontend',
-      eventLst: [],
+      eventList: [],
     }
+
     // send events to backend
     for (const palette of this.model.paletteList) {
       const event = this.model.buildPaletteEvent(palette);
-      message.eventLst.push(event);
+      message.eventList.push(event);
+    }
+
+    for (const delivery of this.model.deliveryList) {
+      const event = this.model.buildDeliveryEvent(delivery);
+      message.eventList.push(event);
     }
 
     for (const user of this.model.userList) {
@@ -21,18 +27,18 @@ export class WarehouseChannels {
         name: user.name,
         date: user.date,
       };
-      message.eventLst.push(event);
+      message.eventList.push(event);
     }
 
-
-    this.model.http.post(`${environment.warehouseURL}/warehouse `, message)
+    console.log('sending msg');
+    this.model.http.post(`${environment.warehouseURL}/warehouse`, message)
       .subscribe((data) => this.handleResponse(data));
     // handle backend events
   }
 
   private handleResponse(data: any) {
     for (const event of data.eventList) {
-      console.log(data);
+      console.log(event);
       this.model.apply(event);
     }
   }

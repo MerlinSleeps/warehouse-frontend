@@ -1,14 +1,10 @@
-<div class="ui center aligned grid container">
+<div class="ui center aligned grid container" xmlns="http://www.w3.org/1999/html">
   <div *ngFor="let palette of palettes" class="row">
-    <div class="fourteen wide column">
-      {{palette.id}}
-      {{palette.product}}
-      {{palette.items}}
-      {{palette.priority}}
-      {{palette.user.name}}
-      {{palette.place}}
+    <div class="fourteen wide column"><button class="ui basic button" (click)="choosePaletteAction(palette)">
+      {{palette.id}}  {{palette.product}}  {{palette.items}}
+      {{palette.place}}  {{palette.priority}}  {{palette.user.name}}
       {{palette.state}}
-    </div>
+    </button></div>
     <div class="one wide column"><button class="ui basic button">-</button></div>
   </div>
 </div>

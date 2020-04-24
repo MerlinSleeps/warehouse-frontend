@@ -1,0 +1,9 @@
+import Product from './product';
+import User from './user';
+
+export class Delivery {
+  public id: string;
+  public user: string;
+  public product: string;
+  public state: string;
+}

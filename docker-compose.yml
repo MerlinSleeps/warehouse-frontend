@@ -1,0 +1,22 @@
+version: '3'
+services:
+    warehouse-backend:
+        build: ./Warehouse/WarehouseBackend
+        ports:
+          - "5000:5000"
+        environment:
+          - DATABASE=database
+    warehouse-frontend:
+        build: ./Warehouse/WarehouseFrontend
+        ports:
+          - "8080:8080"
+    shop-backend:
+        build: ./Shop/ShopBackend
+        ports:
+          - "5001:5001"
+        environment:
+          - DATABASE=database
+    shop-frontend:
+        build: ./Shop/ShopFrontend
+        ports:
+          - "9090:8080"
